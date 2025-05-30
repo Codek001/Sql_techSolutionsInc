@@ -52,7 +52,10 @@ Write a query to return data matching this description. You must match all colum
 SELECT * FROM public.support
 	WHERE id IS NULL;
 -- no missing id
-
+-- Write your query for task 1 in this cell
+SELECT * FROM public.support
+	WHERE public.support.customer_id IS NULL;
+-- no missing customer_id
 
 ```
 
