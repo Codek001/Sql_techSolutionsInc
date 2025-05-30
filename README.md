@@ -18,13 +18,7 @@ You are working with the customer support team to provide data to managers to he
    	2. public.survey
 
 ### Tools Used
-- Ms Excel for data cleaning [Download here](https://www.microsoft.com/en-us/microsoft-365/excel)
-    - For Data collection
-    - For Data Cleaning
-        1. Data Manipulation
-        2. Data Munching
 - SQL Server (for querying and analysis)
-- Power Bi 
 - MS Power Point
 ### Data Cleaning and Preparation
 In the initial phase of the data cleaning and preparations, we perform the following action;
@@ -37,9 +31,10 @@ EDA involves exploring of the data to answers some questions
 
 ### Data Analysis 
 ``` SQL
-SELECT * FROM exercise_logs;
-SELECT * FROM exercise_logs ORDER BY minutes DESC, calories DESC;
-SELECT * FROM exercise_logs WHERE calories > 50 ORDER BY calories DESC;
+-- Write your query for task 1 in this cell
+SELECT * FROM public.support
+	WHERE id IS NULL;
+-- no missing id
 
 /* AND */
 -- What type of exercise burn more calories with less minutes
