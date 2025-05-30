@@ -13,7 +13,9 @@ Tech Solutions Inc. has been experiencing a decline in customer satisfaction rat
 You are working with the customer support team to provide data to managers to help the company take proactive measures to address these concerns effectively.
 
 ### Data Source
-  The primary source of Data used here is in .csv file and this is open source data 
+  The primary source of Data used here is an open source data on Datacamp. We have two tables;
+  	1. public.support
+   	2. public.survey
 
 ### Tools Used
 - Ms Excel for data cleaning [Download here](https://www.microsoft.com/en-us/microsoft-365/excel)
