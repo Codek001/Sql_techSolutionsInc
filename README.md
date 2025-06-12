@@ -82,7 +82,7 @@ SELECT
 FROM 
     public.support;
 ```
-https://www.datacamp.com/datalab/w/cf462640-09c0-42b3-8de8-16b6d7913453/edit#003151dc-058f-4569-9c44-00aa09b1d3c5
+
   
 
 > Without data you're just
