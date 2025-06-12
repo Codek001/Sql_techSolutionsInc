@@ -58,7 +58,31 @@ SELECT * FROM public.support
 -- no missing customer_id
 
 ```
-
+``` SQL
+-- Write your query for task 1 in this cell
+SELECT 
+    id,
+    COALESCE(customer_id, 0) AS customer_id,
+	COALESCE(category, ' ', 'Other') as category,
+	CASE 
+    WHEN status IS NULL THEN 'Resolved'
+    WHEN status LIKE '-%' THEN 'Resolved'
+    WHEN TRIM(status) = '' THEN 'Resolved'
+    ELSE status
+  END AS cleaned_status,
+    COALESCE(creation_date::date, '2023-01-01'::date) AS creation_date,
+    COALESCE(response_time, 0) AS response_time,
+	ROUND(
+      COALESCE(
+        NULLIF(REGEXP_REPLACE(resolution_time, '[^0-9.]', '', 'g'), '')::numeric, 
+        0
+      ), 
+      2
+    ) AS resolution_time
+FROM 
+    public.support;
+```
+https://www.datacamp.com/datalab/w/cf462640-09c0-42b3-8de8-16b6d7913453/edit#003151dc-058f-4569-9c44-00aa09b1d3c5
   
 
 > Without data you're just
