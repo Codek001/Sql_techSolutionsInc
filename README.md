@@ -8,9 +8,25 @@ Now is the time to showcase my learnig by practice and getting better. Keep at i
 ### Project Overview
 Tech Solutions Inc. is a leading technology company specializing in software development and IT consulting services. The company prides itself on delivering innovative solutions to clients across various industries. With a dedicated team of skilled professionals, TechSolutions has earned a reputation for excellence in the tech industry.
 
-Tech Solutions Inc. has been experiencing a decline in customer satisfaction ratings over the past few months. Customer feedback surveys and support tickets indicate an increase in dissatisfaction among clients. The company is concerned about this trend as it directly impacts customer retention, reputation, and overall business growth.
+## Understanding the Problem
 
-You are working with the customer support team to provide data to managers to help the company take proactive measures to address these concerns effectively.
+Tech Solutions Inc. is facing a decline in customer satisfaction, as indicated by feedback surveys and support tickets. This trend is concerning because it affects customer retention, the company's reputation, and overall business growth. To address these issues, the company needs to analyze the data related to customer support interactions to identify patterns and areas for improvement.
+
+## Using SQL to Analyze Customer Support Data
+
+SQL (Structured Query Language) is a powerful tool for querying and managing data in relational databases. By using SQL, we can extract, manipulate, and analyze data from the company's support database to gain insights into customer satisfaction issues.
+
+### Key Steps in Using SQL for Analysis
+
+1. **Data Cleaning**: Before analysis, it's crucial to clean the data to ensure accuracy. This involves handling missing values, correcting data types, and standardizing formats. For example, using `COALESCE` to fill in missing values or `REGEXP_REPLACE` to clean text fields.
+
+2. **Data Extraction**: Use SQL queries to extract relevant data from the database. This might include support ticket details, customer feedback, and response times.
+
+3. **Data Transformation**: Transform the data into a format suitable for analysis. This could involve calculating new metrics, such as average response time or resolution rate, using SQL functions like `ROUND` or `CASE` statements for conditional logic.
+
+4. **Data Analysis**: Perform analysis to identify trends and patterns. This could involve grouping data by categories, calculating averages, or identifying outliers.
+
+5. **Reporting**: Use the results of the SQL queries to create reports that provide insights into customer satisfaction issues. These reports can help managers make informed decisions to improve customer service.
 
 ### Data Source
   The primary source of Data used here is an open source data on Datacamp. We have two tables;
@@ -19,7 +35,8 @@ You are working with the customer support team to provide data to managers to he
 
 ### Tools Used
 - SQL Server (for querying and analysis)
-- MS Power Point
+- MS Excel
+- Power Bi
 ### Data Cleaning and Preparation
 In the initial phase of the data cleaning and preparations, we perform the following action;
 1. Data loading and inspectation
@@ -85,13 +102,39 @@ FROM
 
   
 
-> Without data you're just
+# Task 2
 
-> another person with an opinion
+It is suspected that the response time to tickets is a big factor in unhappiness.
+Calculate the minimum and maximum response time for each category of support ticket. 
+Your output should include the columns `category`, `min_response` and `max_response`. 
+Values should be rounded to two decimal places where appropriate. 
+``` sql
+-- Write your query for task 2 in this cell
 
-to **boldly** go
+WITH min_r AS (SELECT category, ROUND(MIN(response_time), 2) AS min_response 
+					FROM public.support
+					GROUP BY category),
+	max_r AS (SELECT category, ROUND(MAX(response_time), 2) AS max_response 
+					FROM public.support
+					GROUP BY category)
+SELECT min_r.category, min_r.min_response, max_r.max_response
+FROM min_r
+JOIN max_r 
+	ON min_r.category = max_r.category;
+```
 
-to __boldly__ go
+# Task 3
 
-**Analysis**
+The support team want to know more about the `rating` provided by customers who reported `Bugs` or `Installation Problem`s. 
+Write a query to return the `rating` from the survey, the `customer_id`, `category` and `response_time` of the support ticket, for the customers & categories of interest. 
+Use the original support table, not the output of task 1. 
+``` sql
+-- Write your query for task 3 in this cell
+SELECT s.customer_id, s.category, s.response_time, sv.rating
+FROM public.survey AS sv
+JOIN public.support AS s
+	ON sv.customer_id = s.customer_id
+WHERE s.category IN ('Bug', 'Installation Problem');
+```
+
 
