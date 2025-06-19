@@ -122,7 +122,7 @@ FROM min_r
 JOIN max_r 
 	ON min_r.category = max_r.category;
 ```
-
+-- Specifically, it calculates the minimum and maximum response times for each category of support ticket, which can help identify areas where response times may be contributing to customer unhappiness. The result revels that Bugs and Installation Problems have the longest delays, with response times ranging from 1 to 13 and 5 to 17 days respectively, indicating potential for significant user dissatisfaction which likely contribute most to user unhappiness due to their higher and more variable response times (days). These areas should be prioritized for process improvement or automation to enhance user satisfaction.
 # Task 3
 
 The support team want to know more about the `rating` provided by customers who reported `Bugs` or `Installation Problem`s. 
